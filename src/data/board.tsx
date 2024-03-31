@@ -126,9 +126,5 @@ export const Board: Columns = {
 				],
 			},
 		],
-	},
-	delete: {
-		name: "Drop to Delete",
-		items: [],
 	}
 };
