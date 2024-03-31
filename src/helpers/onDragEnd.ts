@@ -5,8 +5,8 @@ export const onDragEnd = (result: any, columns: any, setColumns: any) => {
   const { source, destination } = result;
 
   if (source.droppableId !== destination.droppableId) {
-    const sourceColumn = columns[source.doppableId];
-    const destColumn = columns[destination.doppableId];
+    const sourceColumn = columns[source.droppableId];
+    const destColumn = columns[destination.droppableId];
     const sourceItems = [...sourceColumn.items];
     const destItems = [...destColumn.items];
     const [removed] = sourceItems.splice(source.index, 1);

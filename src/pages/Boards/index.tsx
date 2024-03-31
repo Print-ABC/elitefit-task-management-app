@@ -29,12 +29,11 @@ const Boards = () => {
 
   return (
     <>
-      <DragDropContext
-        onDragEnd={(result: any) => onDragEnd(result, columns, setColumns)}
+      <DragDropContext onDragEnd={(result: any) => onDragEnd(result, columns, setColumns)}
       >
         <div className="w-full flex items-start justify-between px-5 pb-8 md:gap-0 gap-10">
           {Object.entries(columns).map(([columnId, column]: any) => (
-            <div key={columnId} className="w-full flex flex-col">
+            <div key={columnId} className="w-full flex flex-col gap-0">
               <Droppable droppableId={columnId} key={columnId}>
                 {(provided: any) => (
                   <div
@@ -45,7 +44,7 @@ const Boards = () => {
                     <div className="flex items-center justify-center py-[10px] w-full bg-white rounded-lg shadow-sm text-[#555] font-medium text-[15px]">
                       {column.name}
                     </div>
-                    {column.items.map((task: any, index: any) => {
+                    {column.items.map((task: any, index: any) => (
                       <Draggable
                         key={task.id.toString()}
                         draggableId={task.id.toString()}
@@ -56,8 +55,8 @@ const Boards = () => {
                             <Task provided={provided} task={task} />
                           </>
                         )}
-                      </Draggable>;
-                    })}
+                      </Draggable>
+                    ))}
                     {provided.placeholder}
                   </div>
                 )}

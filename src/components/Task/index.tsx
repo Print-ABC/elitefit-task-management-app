@@ -13,7 +13,7 @@ const Task = ({ task, provided }: TaskProps) => {
     <div
       ref={provided.innerRef}
       {...provided.draggableProps}
-      {...provided.dragJandleProps}
+      {...provided.dragHandleProps}
       className="w-full cursor-grab bg-white flex flex-col justify-between gap-3 items-start shadow-sm rounded-xl px-3 py-4"
     >
       {image && alt && (
@@ -24,6 +24,7 @@ const Task = ({ task, provided }: TaskProps) => {
           <span
             key={tag.title}
             className="px-[10px] py-[2px] text-[13px] font-medium rounded-md"
+						style={{ backgroundColor: tag.bg, color: tag.text }}
           >
             {tag.title}
           </span>
