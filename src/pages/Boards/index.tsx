@@ -32,7 +32,10 @@ const Boards = () => {
                       >
                         {(provided: any) => (
                           <>
-                            <Task />
+                            <Task
+                                provided={provided}
+                                task={task}
+                            />
                           </>
                         )}
                       </Draggable>;
