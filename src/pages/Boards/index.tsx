@@ -27,6 +27,24 @@ const Boards = () => {
     newBoard[selectedColumn].items.push(taskData);
   };
 
+  const handleDelTask = (taskData: any, columnId: any) => {
+    const sourceColumn = columns[columnId];
+    let sourceItems = [...sourceColumn.items];
+    const index = sourceItems.indexOf(taskData);
+    if (sourceItems.length == 1) { // If there is only 1 remaining task
+      sourceItems.pop();
+    } else {
+      sourceItems = sourceItems.splice(index, 1);
+    }
+    setColumns({
+      ...columns,
+      [columnId]: {
+        ...sourceColumn,
+        items: sourceItems,
+      },
+    });
+  };
+
   return (
     <>
       <DragDropContext onDragEnd={(result: any) => onDragEnd(result, columns, setColumns)}
@@ -52,7 +70,12 @@ const Boards = () => {
                       >
                         {(provided: any) => (
                           <>
-                            <Task provided={provided} task={task} />
+                            <Task
+                              provided={provided}
+                              task={task}
+                              columnId={columnId}
+                              handleDelTask={handleDelTask}
+                            />
                           </>
                         )}
                       </Draggable>

@@ -11,10 +11,11 @@ import EditModal from "../Modals/EditModal";
 interface TaskProps {
   task: TaskT;
   provided: any;
+  columnId: string;
+  handleDelTask: (taskData: any, columnId: any) => void;
 }
 
-const Task = ({ task, provided }: TaskProps) => {
-  // const { title, description, priority, duedate, image, alt, tags } = task;
+const Task = ({ task, provided, columnId, handleDelTask }: TaskProps) => {
   const [taskData, setTaskData] = useState(task);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -26,8 +27,12 @@ const Task = ({ task, provided }: TaskProps) => {
     setModalOpen(false);
   };
 
-  const handleEditTask = (taskData: any) => {
+  const taskEdit = (taskData: any) => {
     setTaskData(taskData);
+  };
+
+  const taskDelete = () => {
+    handleDelTask(taskData, columnId);
   };
 
   return (
@@ -38,7 +43,11 @@ const Task = ({ task, provided }: TaskProps) => {
       className="w-full cursor-grab bg-white flex flex-col justify-between gap-3 items-start shadow-sm rounded-xl px-3 py-4"
     >
       {taskData.image && taskData.alt && (
-        <img src={taskData.image} alt={taskData.alt} className="w-full h-[170px] rounded-lg" />
+        <img
+          src={taskData.image}
+          alt={taskData.alt}
+          className="w-full h-[170px] rounded-lg"
+        />
       )}
       <div className="flex items-center gap-2">
         {taskData.tags.map((tag) => (
@@ -52,8 +61,12 @@ const Task = ({ task, provided }: TaskProps) => {
         ))}
       </div>
       <div className="w-full flex items-start flex-col">
-        <span className="text-[15.5px] font-medium text-[#555]">{taskData.title}</span>
-        <span className="text-[13.5px] text-gray-500">{taskData.description}</span>
+        <span className="text-[15.5px] font-medium text-[#555]">
+          {taskData.title}
+        </span>
+        <span className="text-[13.5px] text-gray-500">
+          {taskData.description}
+        </span>
       </div>
       <div className="w-full border border-dashed"></div>
       <div className="w-full flex items-center justify-between">
@@ -73,11 +86,17 @@ const Task = ({ task, provided }: TaskProps) => {
       </div>
       <div className="w-full border border-dashed"></div>
       <div className="w-full flex items-center gap-2 justify-items-stretch">
-        <div className="cursor-pointer w-full flex justify-items-center gap-2 hover:bg-gray-200 py-2" onClick={openModal}>
+        <div
+          className="cursor-pointer w-full flex justify-items-center gap-2 hover:bg-gray-200 py-2"
+          onClick={openModal}
+        >
           <PencilOutline color={"#666"} />
           <span>Edit</span>
         </div>
-        <div className="cursor-pointer w-full flex justify-items-center gap-2 hover:bg-gray-200 py-2">
+        <div
+          className="cursor-pointer w-full flex justify-items-center gap-2 hover:bg-gray-200 py-2"
+          onClick={taskDelete}
+        >
           <TrashBinOutline color={"#666"} />
           <span>Del</span>
         </div>
@@ -86,7 +105,7 @@ const Task = ({ task, provided }: TaskProps) => {
         isOpen={modalOpen}
         onClose={closeModal}
         setOpen={setModalOpen}
-        handleEditTask={handleEditTask}
+        handleEditTask={taskEdit}
         task={taskData}
       />
     </div>
