@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { TimerOutline } from "react-ionicons";
 import { TaskT } from "../../types";
 
 interface TaskProps {
@@ -8,7 +7,7 @@ interface TaskProps {
 }
 
 const Task = ({ task, provided }: TaskProps) => {
-  const { title, description, priority, deadline, image, alt, tags } = task;
+  const { title, description, priority, image, alt, tags } = task;
   return (
     <div
       ref={provided.innerRef}
@@ -35,11 +34,7 @@ const Task = ({ task, provided }: TaskProps) => {
         <span className="text-[13.5px] text-gray-500">{description}</span>
       </div>
       <div className="w-full border border-dashed"></div>
-      <div className="w-full flex items-center justify-between">
-        <div className="flex items-center gap-1">
-          <TimerOutline color="#666" width="19px" height="19px" />
-          <span className="text-[13px] text-gray-700">{deadline} mins</span>
-        </div>
+        <div className="w-full flex items-center justify-between">
         <div
           className={`w-[60px] rounded-full h-[5px] ${
             priority === "high"

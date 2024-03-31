@@ -27,7 +27,6 @@ const AddModal = ({
     title: "",
     description: "",
     priority: "",
-    deadline: 0,
     image: "",
     alt: "",
     tags: [] as Tag[],
@@ -112,14 +111,6 @@ const AddModal = ({
           <option value="high">High</option>
         </select>
 
-        <input
-          type="number"
-          name="deadline"
-          value={taskData.description}
-          onChange={handleChange}
-          placeholder="Deadline"
-          className="w-full h-12 px-3 outline-none rounded-md bg-slate-100 border border-slate-300 text-sm font-medium"
-        />
         <input
           type="text"
           value={tagTitle}
