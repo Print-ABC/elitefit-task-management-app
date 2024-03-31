@@ -29,6 +29,7 @@ const AddModal = ({
     priority: "",
     image: "",
     alt: "",
+    duedate: "",
     tags: [] as Tag[],
   };
   const [taskData, setTaskData] = useState(initialTaskData);
@@ -110,6 +111,15 @@ const AddModal = ({
           <option value="medium">Medium</option>
           <option value="high">High</option>
         </select>
+
+				<input
+					type="text"
+					name="duedate"
+					value={taskData.duedate}
+					onChange={handleChange}
+					placeholder="Due Date"
+					className="w-full h-12 px-3 outline-none rounded-md bg-slate-100 border border-slate-300 text-sm"
+				/>
 
         <input
           type="text"

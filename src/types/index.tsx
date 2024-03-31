@@ -3,6 +3,7 @@ export type TaskT = {
   title: string;
   description: string;
   priority: string;
+	duedate: string;
   image?: string;
   alt?: string;
   tags: { title: string; bg: string; text: string }[];

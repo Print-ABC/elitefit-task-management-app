@@ -6,7 +6,7 @@ import { Columns } from "../types";
 import { getRandomColors } from "../helpers/getRandomColors";
 
 export const Board: Columns = {
-	backlog: {
+	pending: {
 		name: "Pending",
 		items: [
 			{
@@ -14,6 +14,7 @@ export const Board: Columns = {
 				title: "Admin Panel Front-end",
 				description: "Lorem ipsum dolor sit amet ..",
 				priority: "medium",
+				duedate: "01/01/20",
 				image: taskImage2,
 				alt: "task image",
 				tags: [
@@ -26,6 +27,7 @@ export const Board: Columns = {
 				title: "Admin Panel Back-end",
 				description: "Lorem ipsum dolor sit amet ..",
 				priority: "low",
+				duedate: "01/01/20",
 				tags: [
 					{ title: "Test", ...getRandomColors() },
 					{ title: "Front", ...getRandomColors() },
@@ -33,7 +35,7 @@ export const Board: Columns = {
 			},
 		],
 	},
-	pending: {
+	todo: {
 		name: "To Do",
 		items: [
 			{
@@ -41,6 +43,7 @@ export const Board: Columns = {
 				title: "Admin Panel Back-end",
 				description: "Lorem ipsum dolor sit amet ..",
 				priority: "high",
+				duedate: "01/01/20",
 				tags: [
 					{ title: "Test", ...getRandomColors() },
 					{ title: "Front", ...getRandomColors() },
@@ -51,24 +54,8 @@ export const Board: Columns = {
 				title: "Admin Panel Front-end",
 				description: "Lorem ipsum dolor sit amet ..",
 				priority: "low",
+				duedate: "01/01/20",
 				image: taskImage,
-				alt: "task image",
-				tags: [
-					{ title: "Test", ...getRandomColors() },
-					{ title: "Front", ...getRandomColors() },
-				],
-			},
-		],
-	},
-	todo: {
-		name: "Doing",
-		items: [
-			{
-				id: uuidv4(),
-				title: "Admin Panel Front-end",
-				description: "Lorem ipsum dolor sit amet ..",
-				priority: "medium",
-				image: taskImage3,
 				alt: "task image",
 				tags: [
 					{ title: "Test", ...getRandomColors() },
@@ -78,6 +65,24 @@ export const Board: Columns = {
 		],
 	},
 	doing: {
+		name: "Doing",
+		items: [
+			{
+				id: uuidv4(),
+				title: "Admin Panel Front-end",
+				description: "Lorem ipsum dolor sit amet ..",
+				priority: "medium",
+				duedate: "01/01/20",
+				image: taskImage3,
+				alt: "task image",
+				tags: [
+					{ title: "Test", ...getRandomColors() },
+					{ title: "Front", ...getRandomColors() },
+				],
+			},
+		],
+	},
+	completed: {
 		name: "Completed",
 		items: [
 			{
@@ -85,6 +90,7 @@ export const Board: Columns = {
 				title: "Admin Panel Front-end",
 				description: "Lorem ipsum dolor sit amet ..",
 				priority: "low",
+				duedate: "01/01/20",
 				tags: [
 					{ title: "Test", ...getRandomColors() },
 					{ title: "Front", ...getRandomColors() },
@@ -95,6 +101,7 @@ export const Board: Columns = {
 				title: "Admin Panel Back-end",
 				description: "Lorem ipsum dolor sit amet ..",
 				priority: "medium",
+				duedate: "01/01/20",
 				tags: [
 					{ title: "Test", ...getRandomColors() },
 					{ title: "Front", ...getRandomColors() },
@@ -102,7 +109,7 @@ export const Board: Columns = {
 			},
 		],
 	},
-	done: {
+	overdue: {
 		name: "Overdue",
 		items: [
 			{
@@ -110,6 +117,7 @@ export const Board: Columns = {
 				title: "Admin Panel Front-end",
 				description: "Lorem ipsum dolor sit amet ..",
 				priority: "high",
+				duedate: "01/01/20",
 				image: taskImage,
 				alt: "task image",
 				tags: [
@@ -119,4 +127,8 @@ export const Board: Columns = {
 			},
 		],
 	},
+	delete: {
+		name: "Drop to Delete",
+		items: [],
+	}
 };
