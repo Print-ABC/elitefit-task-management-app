@@ -29,12 +29,12 @@ const Boards = () => {
 
   const handleDelTask = (taskData: any, columnId: any) => {
     const sourceColumn = columns[columnId];
-    let sourceItems = [...sourceColumn.items];
+    const sourceItems = [...sourceColumn.items];
     const index = sourceItems.indexOf(taskData);
     if (sourceItems.length == 1) { // If there is only 1 remaining task
       sourceItems.pop();
     } else {
-      sourceItems = sourceItems.splice(index, 1);
+      sourceItems.splice(index, 1);
     }
     setColumns({
       ...columns,
